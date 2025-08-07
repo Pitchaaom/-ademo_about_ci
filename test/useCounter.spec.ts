@@ -1,5 +1,6 @@
 import { renderHook, act } from '@testing-library/react';
-import useCounter from '../../src/hooks/features/homepage/useCounter';
+import { describe, it, expect } from 'vitest'; // ใช้จาก vitest
+import useCounter from '../src/hooks/features/homepage/useCounter';
 
 describe('useCounter', () => {
   it('should initialize count to 0 and val to 1', () => {
@@ -23,8 +24,11 @@ describe('useCounter', () => {
     const { result } = renderHook(() => useCounter());
 
     act(() => {
-      result.current.setVal(5);
-      result.current.increment();
+      result.current.setVal(5); // ตั้งค่า val ใหม่
+    });
+
+    act(() => {
+      result.current.increment(); // ใช้ค่า val ที่ถูกตั้งแล้ว
     });
 
     expect(result.current.count).toBe(5);
