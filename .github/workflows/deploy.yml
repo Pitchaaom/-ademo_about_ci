@@ -20,7 +20,7 @@ jobs:
         run: npm run lint
       - name: Run Vitest
         run: npx vitest run
-      - name: Deploy to Vercel (Production)
+      - name: Deploy to Vectel (Production)
         if: github.event_name == 'push'
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
